@@ -1,10 +1,5 @@
 import numpy as np
-import cv2
-import time
 import os
-
-from utils.screen import grab_screen
-from utils.getkeys import key_check
 
 
 file_name = "data/training_data.npy"

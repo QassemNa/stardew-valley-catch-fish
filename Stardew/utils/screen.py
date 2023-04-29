@@ -38,13 +38,22 @@ def grab_screen(region=None):
     return cv2.cvtColor(img, cv2.COLOR_BGRA2RGB)
 
 
-def main_screen(screen_shot):
-    scr = screen_shot.grab({
-        'left': 0,
-        'top': 30,
-        'width': 1280,
-        'height': 720
-    })
+def main_screen(screen_shot, just_reel=False):
+    if just_reel:
+        dimensions = {
+            'left': 800,
+            'top': 30,
+            'width': 219,
+            'height': 620
+        }
+    else:
+        dimensions = {
+            'left': 0,
+            'top': 30,
+            'width': 1280,
+            'height': 720
+        }
+    scr = screen_shot.grab(dimensions)
     img = np.array(scr)
     return cv2.cvtColor(img, cv2.IMREAD_COLOR)
 
@@ -54,7 +63,6 @@ def fix_image(img):
     f = np.zeros((s, s, 3), np.uint8)
     ax, ay = (s - img.shape[1]) // 2, (s - img.shape[0]) // 2
     f[ay:img.shape[0] + ay, ax:ax + img.shape[1]] = img
-    #f = cv2.Canny(f, threshold1=119, threshold2=250)
+    # f = cv2.Canny(f, threshold1=119, threshold2=250)
     image = cv2.resize(f, (224, 224))
     return image
-

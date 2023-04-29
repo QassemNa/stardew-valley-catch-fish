@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 
 from Stardew.CreateData import save_data
-from screen import fix_image
+from Stardew.utils.screen import fix_image
 
 
-def collect_data(images, image_data, targets, num_caught ):
+def collect_data(images, image_data, targets, num_caught):
     images = images[:-15]
 
     for image in images:

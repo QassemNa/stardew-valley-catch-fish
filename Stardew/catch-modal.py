@@ -8,6 +8,7 @@ import numpy as np
 import cv2
 from mss.base import MSSBase
 
+from Stardew.utils.data import collect_data
 from utils.Controls import PressKey, ReleaseKey
 
 from utils.screen import grab_screen, main_screen, fix_image
@@ -177,7 +178,7 @@ while 1:
             #print(count, ": Key pressed is", keys, "\nIt took", end - start, "to run this loop")
             """
         if isfishing[1]:
-            collect_data(images)
+            collect_data(images, image_data, targets, num_caught)
             count = int(count)
             print("You Caught a FISH !!!!!")
         else:
@@ -220,14 +221,14 @@ while 1:
 Thoughts:
     1- discard images since we only have a limited variables
     2- variables are:
-        A- Position of fish
-        B- Position of Bar
-        C- current reel state
-        D- Distance from bar to fish
-        R- distance the bar to either edge
+        A- Position of fish and speed
+        B- Position of Bar and length / position of its head and tail
+        C- current progress state; this might not be helpful because the modal can't use it
+        ?D- Distance from bar to fish
+        E- distance the bar to either edge
         F- Size of bar
         G- is Reeling
-        G- Bar Transparency; Not sure why
-        H- 
+        ?H- Bar Transparency
+        ?J-DurationOfTheGame 
     3- See how they made it in the other game
 """

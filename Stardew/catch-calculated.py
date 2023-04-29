@@ -1,12 +1,7 @@
-import sys
 import time
 from cv2 import cv2
 import numpy as np
 import mss
-from utils.Controls import PressKey, ReleaseKey, C
-from pynput.mouse import Button, Controller
-import os
-import threading
 
 from utils.screen import grab_screen, main_screen
 
@@ -18,9 +13,11 @@ sleepy = 0.01
 # cv2.waitKey(0)
 # image = grab_screen(region=(805, 255, 830, 805))  # region=(50, 100, 799, 449)bb
 # img = cv2.imread("data/images/3.png")
+DATA_NEEDED = []
 while 1:
 
     # frame = cv2.imread("Screenshots/Screenshot_3.png")
+
     frame = main_screen(screen_shot=SCT)
     hsvframe = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     blue_lower = np.array([80, 150, 0], np.uint8)
@@ -184,9 +181,7 @@ while 1:
             frame, "not hooked", (320, 90), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255)
         )
     cv2.imshow("main", frame)
-    cv2.waitKey(1)
-# cv2.imshow("AI Peak", countours)
-# cv2.waitKey(0)
+    cv2.waitKey(0)
 
 """
 This is what I understand rn:
